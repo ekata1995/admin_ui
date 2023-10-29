@@ -1,20 +1,21 @@
-name: Node.js CI
+name: Docker CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [main]
   pull_request:
-    branches: [ "main" ]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x]
+
     steps:
     - uses: actions/checkout@v2
+
     - name: Build and run Docker container
       run: |
         docker build -t my-node-app .
-        docker run my-node-app
+        docker run -d --name my-node-container my-node-app
+
+    
