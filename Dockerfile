@@ -4,8 +4,6 @@ FROM node:14
 # Copy all the source files to the working directory
 COPY . .
 
-# Set the working directory in the container
-WORKDIR /client
 
 # Install project dependencies
 RUN npm install
